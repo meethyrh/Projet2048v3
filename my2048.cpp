@@ -8,7 +8,6 @@ typedef vector<vector<int> > Plateau;
 #include "Jeu2048.h"
 
 int main(){
-    int score = 0;
 
     initscr();
     keypad(stdscr, TRUE);

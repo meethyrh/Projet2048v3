@@ -7,9 +7,6 @@
 using namespace std;
 typedef vector<vector<int> > Plateau;
 
-// le score
-extern int score;
-
 /** génère un Plateau de dimensions 4*4 ne contenant que des 0
  *  @return un Plateau vide
  * une fonction qui devrais marché a chaque fois qu'elle est appellée
