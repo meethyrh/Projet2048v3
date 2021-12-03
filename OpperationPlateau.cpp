@@ -181,3 +181,9 @@ Plateau deplacement(Plateau plateau, int direction){
     }
     return plateau;
 }
+
+struct SCORE
+{
+    Plateau plateau;
+    int score;
+};
