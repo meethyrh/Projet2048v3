@@ -24,8 +24,10 @@ int main(){
     init_pair(2, COLOR_BLACK, COLOR_WHITE);
 
 //DEBUT DU JEU AVEC PLATEAU INITIAL
-    Plateau plateau = plateauInitial(plateauVide());
-    string affichage = dessine(plateau);
+    PS plateau; 
+    plateau.plateau = plateauInitial(plateauVide());
+    plateau.score = 0; 
+    string affichage = dessine(plateau.plateau);
     printw("Pour commencer une partie, appuyez sur Entré");
     refresh();
     getch();
@@ -34,8 +36,8 @@ int main(){
     attron(COLOR_PAIR(1));
     refresh();
     int direction;
-    bool winCondition = estGagnant(plateau);
-    bool loseCondition = estTermine(plateau);
+    bool winCondition = estGagnant(plateau.plateau);
+    bool loseCondition = estTermine(plateau.plateau);
 
 //LES TOURS DU JEU
     while (winCondition == false and loseCondition == false){
@@ -43,37 +45,39 @@ int main(){
         clear();
         if (direction == KEY_UP){
             plateau = deplacement(plateau, 1);
-            affichage = dessine(plateau);
+            affichage = dessine(plateau.plateau);
             attron(COLOR_PAIR(1));
             printw(affichage.c_str());
             attron(COLOR_PAIR(1));
             refresh();
         } if (direction == KEY_DOWN){
             plateau = deplacement(plateau, 2);
-            affichage = dessine(plateau);
+            affichage = dessine(plateau.plateau);
             attron(COLOR_PAIR(1));
             printw(affichage.c_str());
             attron(COLOR_PAIR(1));
             refresh();
         } if (direction == KEY_LEFT){
             plateau = deplacement(plateau, 3);
-            affichage = dessine(plateau);
+            affichage = dessine(plateau.plateau);
             attron(COLOR_PAIR(1));
             printw(affichage.c_str());
             attron(COLOR_PAIR(1));
             refresh();
         } if (direction == KEY_RIGHT){
             plateau = deplacement(plateau, 4);
-            affichage = dessine(plateau);
+            affichage = dessine(plateau.plateau);
             attron(COLOR_PAIR(1));
             printw(affichage.c_str());
             attron(COLOR_PAIR(1));
             refresh();
         }
-        winCondition = estGagnant(plateau);
-        loseCondition = estTermine(plateau);
+        cout << "SCORE: " + to_string(plateau.score) << endl;;
+        refresh();
+        winCondition = estGagnant(plateau.plateau);
+        loseCondition = estTermine(plateau.plateau);
     } 
-    if(estGagnant(plateau) == true){
+    if(estGagnant(plateau.plateau) == true){
         attron(COLOR_PAIR(2));
         printw("You defeated 2048 \nAppuyez sur F1 pour quitté\nCMD + fn + f1 sur mac");
         attron(COLOR_PAIR(2));

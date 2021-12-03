@@ -7,6 +7,11 @@
 using namespace std;
 typedef vector<vector<int> > Plateau;
 
+typedef struct {
+    Plateau plateau;
+    int score;
+} PS;
+
 /** génère un Plateau de dimensions 4*4 ne contenant que des 0
  *  @return un Plateau vide
  * une fonction qui devrais marché a chaque fois qu'elle est appellée
@@ -49,7 +54,7 @@ string dessine(Plateau plateau);
  * @param plateau tableau représentant le plateau du jeu
  * @return un plateau avec les cases qui etaient cote a cote combiné et prennant la place de la case qui etait a gauche
  * */ 
-Plateau combineCases_gauche(Plateau plateau);
+PS combineCases_gauche(PS plateau);
 
 /** deplace les tuiles d'un plateau vers la gauche sans les combiner
  * @param plateau Le Plateau
@@ -62,7 +67,7 @@ Plateau deplacementGauche_sansCombi(Plateau plateau);
  *  @param plateau le Plateau
  *  @return le Plateau une fois déplacé vers la gauche
  **/
-Plateau deplacementGauche(Plateau plateau);
+PS deplacementGauche(PS plateau);
 
 /** une fonction qui retourne le tableau sur lui pour que la gauche devienne la droite et vice-versa
  * @param plateau le plateau du jeu
@@ -74,7 +79,7 @@ Plateau flip_vertical(Plateau plateau);
  *  @param plateau le Plateau
  *  @return le Plateau une fois déplacé vers la droite
  **/
-Plateau deplacementDroite(Plateau plateau);
+PS deplacementDroite(PS plateau);
 
 /** déplace les tuiles d'un Plateau vers le haut sans combiner les cases.
  *  @param plateau le Plateau
@@ -87,13 +92,13 @@ Plateau deplacementHaut_sansCombi(Plateau plateau);
  * @param plateau le Plateau
  * @return un plateau une fois les cases combiné
  * */
-Plateau combineCases_haut(Plateau plateau);
+PS combineCases_haut(PS plateau);
 
 /** déplace les tuiles d'un Plateau vers le haut et les combine si possible
  *  @param plateau le Plateau
  *  @return le Plateau une fois déplacé vers le haut
  **/
-Plateau deplacementHaut(Plateau plateau);
+PS deplacementHaut(PS plateau);
 
 /** flip_horizontal
  * definition: une fonction qui flip le plateau sur un axe horizontal
@@ -108,7 +113,7 @@ Plateau flip_horizontal(Plateau plateau);
  *  @param plateau le Plateau
  *  @return le Plateau une fois déplacé vers le bas
  **/
-Plateau deplacementBas(Plateau plateau);
+PS deplacementBas(PS plateau);
 
 
 //NOTE IMPORTANT: POUR CETTE FONCTION J'AI CHANGÉ LE TYPE int DE direction EN string
@@ -119,8 +124,7 @@ Plateau deplacementBas(Plateau plateau);
  * NOTE: on aurait pu utiliser la fonction plateauInitial(plateau) mais j'ai voulu directement implanté la fonction
  * pour génerer des nombres aléatoires après un déplacement pour garder le "contrôle" sur mon code
  **/
-Plateau deplacement(Plateau plateau, int direction);
-
+PS deplacement(PS plateau, int direction);
 
 
 /** permet de savoir si une partie est terminée
@@ -149,3 +153,4 @@ void test_all_func();
  * @return false si elles ne le sont pas.
  */
 bool compareTableau(Plateau plateau1, Plateau plateau2);
+
