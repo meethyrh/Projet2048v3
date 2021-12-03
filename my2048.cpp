@@ -41,6 +41,7 @@ int main(){
 
 //LES TOURS DU JEU
     while (winCondition == false and loseCondition == false){
+        cout << "SCORE: " + to_string(plateau.score) << endl;
         direction = getch();
         clear();
         if (direction == KEY_UP){
@@ -72,8 +73,6 @@ int main(){
             attron(COLOR_PAIR(1));
             refresh();
         }
-        cout << "SCORE: " + to_string(plateau.score) << endl;;
-        refresh();
         winCondition = estGagnant(plateau.plateau);
         loseCondition = estTermine(plateau.plateau);
     } 
