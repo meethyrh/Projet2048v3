@@ -139,45 +139,57 @@ Plateau deplacement(Plateau plateau, int direction){
         Plateau plateauOriginal = plateau;
         plateau = deplacementHaut(plateau);
         Plateau plateau_deplace = plateau;
-        if(plateau_deplace == plateauOriginal){
-            return plateau_deplace;
-        } else {
-            plateau_deplace = nouvelleCase(plateau_deplace);
-            return plateau_deplace;
-        }
+        for(int i = 0; i < plateau.size(); i++){
+            for(int j = 0; j < plateau[i].size(); j++){
+                if(plateau_deplace == plateauOriginal){
+                    return plateau_deplace;
+                }
+            }
+
+        } plateau_deplace = nouvelleCase(plateau_deplace);
+        return plateau_deplace;
     //BAS
     } else if(direction == 2) {
         Plateau plateauOriginal = plateau;
         plateau = deplacementBas(plateau);
         Plateau plateau_deplace = plateau;
-        if(plateau_deplace == plateauOriginal){
-            return plateau_deplace;
-        } else {
-            plateau_deplace = nouvelleCase(plateau_deplace);
-            return plateau_deplace;
-        }
+        for(int i = 0; i < plateau.size(); i++){
+            for(int j = 0; j < plateau[i].size(); j++){
+                if(plateau_deplace == plateauOriginal){
+                    return plateau_deplace;
+                }
+            }
+
+        } plateau_deplace = nouvelleCase(plateau_deplace);
+        return plateau_deplace;
     //GAUCHE
     } else if (direction == 3){
         Plateau plateauOriginal = plateau;
         plateau = deplacementGauche(plateau);
         Plateau plateau_deplace = plateau;
-        if(plateau_deplace == plateauOriginal){
-            return plateau_deplace;
-        } else {
-            plateau_deplace = nouvelleCase(plateau_deplace);
-            return plateau_deplace;
-        }
+        for(int i = 0; i < plateau.size(); i++){
+            for(int j = 0; j < plateau[i].size(); j++){
+                if(plateau_deplace == plateauOriginal){
+                    return plateau_deplace;
+                }
+            }
+
+        } plateau_deplace = nouvelleCase(plateau_deplace);
+        return plateau_deplace;
     //DROITE
     } else if(direction == 4){
         Plateau plateauOriginal = plateau;
         plateau = deplacementDroite(plateau);
         Plateau plateau_deplace = plateau;
-        if(plateau_deplace == plateauOriginal){
-            return plateau_deplace;
-        } else {
-            plateau_deplace = nouvelleCase(plateau_deplace);
-            return plateau_deplace;
-        }
+        for(int i = 0; i < plateau.size(); i++){
+            for(int j = 0; j < plateau[i].size(); j++){
+                if(plateau_deplace == plateauOriginal){
+                    return plateau_deplace;
+                }
+            }
+
+        } plateau_deplace = nouvelleCase(plateau_deplace);
+        return plateau_deplace;
     }
     return plateau;
 }

@@ -48,6 +48,6 @@ string dessine(Plateau plateau){
             }  
         }
     }
-    return "\n   *********************************\n\n" + ligne.str(); 
+    return "\n   *********************************\n" + ligne.str(); 
 }
 
