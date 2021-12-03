@@ -152,9 +152,3 @@ void test_all_func();
  * @return false si elles ne le sont pas.
  */
 bool compareTableau(Plateau plateau1, Plateau plateau2);
-
-struct plateauS
-{
-    Plateau plateau;
-    int score;
-};
