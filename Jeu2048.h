@@ -4,6 +4,7 @@
 #include <vector>
 #include <cstdlib>
 #include <random>
+#include <assert.h>
 using namespace std;
 typedef vector<vector<int> > Plateau;
 
@@ -25,7 +26,7 @@ Plateau plateauVide();
  @param a representant le plus petit élément de l'interval
  @param b représentant le plus grand élément de l'interval
  @return un entier compris entre les bornes de l'interval
- TESTÉ
+ TESTÉ 
 **/ 
 int NumberGenerator(int a, int b);
 
@@ -48,7 +49,8 @@ int tireDeuxOuQuatre();
                                        
 /** affiche un Plateau
  * @param p le Plateau
- * NON TESTÉ AVEC UN ASSERT MAIS MARCHE POUR N'IMPORTE QUELLE PLATEAU DE 2048 4X4
+ * TESTÉ (LE TEST NE COUVRE PAS TOUTES LES POSSIBILITÉ D'AFFICHAGE 
+ MAIS TESTE UNIQUEMENT SI LA FONCTION RENVOIE AU MOIN 3 CARACTÈRES)
  * cette fonction affiche mal les plateau autres que 4x4
  **/
 string dessine(Plateau plateau);
@@ -58,8 +60,9 @@ string dessine(Plateau plateau);
  * une fonction qui combine deux cases cote a cote d'un tableau si les deux cases sont identiques.
  * note: cette fonction ne marche que pour la combinaison de cases apres deplacement a gauche;
  * car la case la plus a gauche va etre comparer avec celle a sa droite. 
- * @param plateau tableau représentant le plateau du jeu
- * @return un plateau avec les cases qui etaient cote a cote combiné et prennant la place de la case qui etait a gauche
+ * @param plateau une structure de données représentant le plateau du jeu et son score associé
+ * @return une structure composé d'un plateau avec les cases côte à côtes combinées et la combinaison prennant 
+ * la place de la case qui etait à gauche ainsi que d'un score associé au plateau s'ajoutant à la valeur de la combinaison des cases  
  * TESTÉ SUR 4 CAS 
  * */ 
 PS combineCases_gauche(PS plateau);
@@ -73,8 +76,8 @@ Plateau deplacementGauche_sansCombi(Plateau plateau);
     
 
 /** déplace les tuiles d'un Plateau vers la gauche et les combine si possible
- *  @param plateau le Plateau
- *  @return le Plateau une fois déplacé vers la gauche
+ *  @param plateau une structure de données représentant le plateau du jeu et son score associé
+ *  @return La structure de donnée avec le nouveau plateau et le score lui étant associé
  * TESTÉ SUR 4 CAS
  **/
 PS deplacementGauche(PS plateau);
@@ -87,14 +90,14 @@ PS deplacementGauche(PS plateau);
 Plateau flip_vertical(Plateau plateau);
                                        
 /** déplace les tuiles d'un Plateau vers la droite et les combine si possible
- *  @param plateau le Plateau
- *  @return le Plateau une fois déplacé vers la droite
+ *  @param plateau une structure de données représentant le plateau du jeu et son score associé
+ *  @return Une structure de données avec le nouveau plateau et le score lui étant associé
  * TESTÉ SUR 4 CAS
  **/
 PS deplacementDroite(PS plateau);
 
 /** déplace les tuiles d'un Plateau vers le haut sans combiner les cases.
- *  @param plateau le Plateau
+ *  @param plateau une structure de données représentant le plateau du jeu et son score associé
  *  @return le Plateau une fois déplacé vers le haut
  * TESTÉ SUR 4 CAS
  **/
@@ -102,22 +105,23 @@ Plateau deplacementHaut_sansCombi(Plateau plateau);
 
 /** Une fonction qui combine les tuiles cote a cote de haut en bas et 
  * remplace la tuile du haut par cette fusion
- * @param plateau le Plateau
- * @return un plateau une fois les cases combiné
+ * @param plateau une structure de données représentant le plateau du jeu et son score associé
+ * @return une structure composé d'un plateau avec les cases côte à côtes (haut bas) combinées et la combinaison prennant 
+ * la place de la case qui était en haut ainsi que d'un score associé au plateau s'ajoutant à la valeur de la combinaison des cases
  * TESTÉ SUR 4 CAS
  * */
 PS combineCases_haut(PS plateau);
 
 /** déplace les tuiles d'un Plateau vers le haut et les combine si possible
- *  @param plateau le Plateau
- *  @return le Plateau une fois déplacé vers le haut
+ *  @param plateau une structure de données représentant le plateau du jeu et son score associé
+ *  @return une strucure de données avec le nouveau plateau et son score associé
  * TESTÉ SUR 4 CAS
  **/
 PS deplacementHaut(PS plateau);
 
 /** flip_horizontal
  * definition: une fonction qui flip le plateau sur un axe horizontal
- * @param plateau de type plateau 
+ * @param plateau Le plateau 
  * @return le plateau retourner sur un axe horizontal
  * note: tab_flipH = tableau fliped sur l'axe Horizontal
  * TESTÉ
@@ -127,7 +131,7 @@ Plateau flip_horizontal(Plateau plateau);
 
 /** déplace les tuiles d'un Plateau vers le bas et les combine si possible
  *  @param plateau le Plateau
- *  @return le Plateau une fois déplacé vers le bas
+ *  @return Une structure de données avec le nouveau plateau et le score lui étant associé
  * TESTÉ SUR 4 CAS
  **/
 PS deplacementBas(PS plateau);
@@ -137,12 +141,20 @@ PS deplacementBas(PS plateau);
 /** déplace les tuiles d'un Plateau dans la direction donnée et génère une nouvelle tuile si le déplacement est valide
  *  @param plateau le Plateau
  *  @param direction la direction
- *  @return le Plateau déplacé dans la direction
+ *  @return Une structure de données composé du plateau ayant été déplacé et du score lui étant associé
  * NOTE: on aurait pu utiliser la fonction plateauInitial(plateau) mais j'ai voulu directement implanté la fonction
  * pour génerer des nombres aléatoires après un déplacement pour garder le "contrôle" sur mon code
- * TESTÉ DANS TOUTES LES DIRECTIONS SUR 4 CAS CHACUNS
+ * TESTÉ EN COMPARANT UN PLATEAU DÉPLACÉ UNIQUEMENT ET UN PLATEAU DÉPLACÉ AUQUEL LA FONCTION nouvelleCase AURAIT ÉTÉ AJOUTÉ.
  **/
 PS deplacement(PS plateau, int direction);
+
+/** @brief une fonction qui ajoute un 2 ou un 4 sur une des cases vide d'un tableau
+* @param plateau Le plateau de jeu
+* @return un nouveau plateau avec un 2 ou un 4 en plus dans l'une des cases précédement vide
+TESTÉ MAIS NE COUVRE QU'UNE PARTIE DES POSSIBILITÉES. ON NE TESTE QUE LA DIFFÉRENCE ENTRE 
+UN PLATEAU AVANT ET APRÈS L'APPEL DE LA FONCTION. 
+*/
+Plateau nouvelleCase(Plateau plateau);
 
 
 /** permet de savoir si une partie est terminée
@@ -162,8 +174,6 @@ bool estTermine(Plateau plateau);
 bool estGagnant(Plateau plateau);
 
 /** Teste toutes le fonction du jeu sauf les fonctions qui fond appelle a des nombres aléatoire.
-NE MARCHE PAS EN COMPILATION. LES FONCTIONS ASSERT OU CHECK NE SONT PAS RECONNUS
-TESTÉ DANS LE JUPYTER HUB
 **/
 void test_all_func();
 

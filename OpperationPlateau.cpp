@@ -84,7 +84,6 @@ Plateau deplacementHaut_sansCombi(Plateau plateau){
 
 
 PS combineCases_haut(PS plateau){
-    plateau.plateau = deplacementHaut_sansCombi(plateau.plateau);
     for(int i = 1; i < plateau.plateau.size(); i++){
         for (int j = 0; j < plateau.plateau[i].size(); j++){
             if(plateau.plateau[i-1][j] > 0 and plateau.plateau[i][j] == plateau.plateau[i-1][j]){
