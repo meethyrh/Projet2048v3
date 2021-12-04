@@ -7,6 +7,7 @@
 using namespace std;
 typedef vector<vector<int> > Plateau;
 
+//une structure de donnée formé d'un tableau 2D associé a un score.
 typedef struct {
     Plateau plateau;
     int score;

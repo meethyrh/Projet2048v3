@@ -21,7 +21,9 @@ int main(){
 
     start_color();
     init_pair(1, COLOR_YELLOW, COLOR_BLACK);
-    init_pair(2, COLOR_BLACK, COLOR_WHITE);
+    init_pair(2, COLOR_WHITE, COLOR_RED);
+    init_pair(3, COLOR_WHITE, COLOR_BLACK);
+    init_pair(4, COLOR_BLACK, COLOR_WHITE);
 
 //DEBUT DU JEU AVEC PLATEAU INITIAL
     PS plateau; 
@@ -41,7 +43,7 @@ int main(){
 
 //LES TOURS DU JEU
     while (winCondition == false and loseCondition == false){
-        cout << "SCORE: " + to_string(plateau.score) << endl;
+        printw(("SCORE: " + to_string(plateau.score)).c_str());
         direction = getch();
         clear();
         if (direction == KEY_UP){
@@ -82,8 +84,16 @@ int main(){
         attron(COLOR_PAIR(2));
     } else {
         attron(COLOR_PAIR(2));
-        printw("Vous avez perdu. \nAppuyez sur F1 pour quitté \nCMD + fn + f1 sur mac");
+        printw("\nVous avez perdu. \n");
+        printw("Votre score final est de: ");
         attron(COLOR_PAIR(2));
+        attron(COLOR_PAIR(4));
+        printw((to_string(plateau.score) + "\n").c_str());
+        attron(COLOR_PAIR(4));
+        attron(COLOR_PAIR(3));
+        printw("\nAppuyez sur F1 pour quitté \nCMD + fn + f1 sur mac");
+        attron(COLOR_PAIR(3));
+
     } refresh();
 
     int quitButton;

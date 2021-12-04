@@ -14,7 +14,7 @@ PS combineCases_gauche(PS plateau){
             if(plateau.plateau[i][j] > 0 and plateau.plateau[i][j] == plateau.plateau[i][j+1] and j+1 <= 3){
                 plateau.plateau[i][j] = plateau.plateau[i][j] + plateau.plateau[i][j+1];
                 plateau.plateau[i][j+1] = 0;
-                plateau.score += plateau.plateau[i][j] + plateau.plateau[i][j+1];
+                plateau.score += plateau.plateau[i][j];
             }
         }
     } return plateau;
@@ -90,7 +90,7 @@ PS combineCases_haut(PS plateau){
             if(plateau.plateau[i-1][j] > 0 and plateau.plateau[i][j] == plateau.plateau[i-1][j]){
                 plateau.plateau[i-1][j] = plateau.plateau[i-1][j] + plateau.plateau[i-1][j];
                 plateau.plateau[i][j] = 0;
-                plateau.score += plateau.plateau[i-1][j] + plateau.plateau[i-1][j];
+                plateau.score += plateau.plateau[i-1][j];
             }
         }
     } return plateau;

@@ -20,11 +20,27 @@ bool compareTableau(Plateau plateau1, Plateau plateau2){
 	} return true;
 }
 
+//pas encore dans le .h
+bool TestPlatoInit(Plateau plateau){
+	int m = 0; 
+	for(int i = 0; i < plateau.size(); i++){
+		for (int j = 0; j < plateau[i].size(); j++){
+			if (plateau[i][j] > 0){
+				m+=1;
+			}
+		}
+	} if (m > 2){
+		return true;
+	} else {
+		return false;
+	}
+}
+
 void test_all_func(){
 	ASSERT(compareTableau(plateauVide(), {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}}));
-	//ASSERT(plateauInitial());
+	ASSERT(TestPlatoInit(plateauInitial(plateauVide())));
 	ASSERT(tireDeuxOuQuatre() == 2 or tireDeuxOuQuatre() == 4);
-	//ASSERT(dessinePlateau());
+	//ASSERT(dessine());
 	ASSERT(compareTableau(combineCases_gauche({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}), {{2,0,0,2},{4,0,0,0},{0,8,0,0},{2,4,0,4}}));
 	ASSERT(compareTableau(deplacementGauche_sansCombi({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}), {{2,2,0,0},{2,2,0,0},{4,4,0,0},{2,4,4,0}}));
 	ASSERT(compareTableau(deplacementGauche({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}), {{4,0,0,0},{4,0,0,0},{8,0,0,0},{2,8,0,0}}));
