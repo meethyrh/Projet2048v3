@@ -8,7 +8,7 @@ typedef vector<vector<int> > Plateau;
 #include "Jeu2048.h"
 
 int main(){
-
+    
     initscr();
     keypad(stdscr, TRUE);
 
@@ -43,7 +43,7 @@ int main(){
 
 //LES TOURS DU JEU
     while (winCondition == false and loseCondition == false){
-        printw(("SCORE: " + to_string(plateau.score)).c_str());
+        printw(("   SCORE: " + to_string(plateau.score)).c_str());
         direction = getch();
         clear();
         if (direction == KEY_UP){

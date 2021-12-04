@@ -37,23 +37,39 @@ bool TestPlatoInit(Plateau plateau){
 }
 
 void test_all_func(){
-	ASSERT(compareTableau(plateauVide(), {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}}));
-	ASSERT(TestPlatoInit(plateauInitial(plateauVide())));
-	ASSERT(tireDeuxOuQuatre() == 2 or tireDeuxOuQuatre() == 4);
+    PS plateau; 
+    plateau.plateau = {{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}};
+    plateau.score = 0;
+    
+	CHECK(compareTableau(plateauVide(), {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}}));
+	CHECK(TestPlatoInit(plateauInitial(plateauVide())));
+	CHECK(tireDeuxOuQuatre() == 2 or tireDeuxOuQuatre() == 4);
+    
 	//ASSERT(dessine());
-	ASSERT(compareTableau(combineCases_gauche({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}), {{2,0,0,2},{4,0,0,0},{0,8,0,0},{2,4,0,4}}));
-	ASSERT(compareTableau(deplacementGauche_sansCombi({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}), {{2,2,0,0},{2,2,0,0},{4,4,0,0},{2,4,4,0}}));
-	ASSERT(compareTableau(deplacementGauche({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}), {{4,0,0,0},{4,0,0,0},{8,0,0,0},{2,8,0,0}}));
-	ASSERT(compareTableau(flip_vertical({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}), {{2,0,0,2},{0,0,2,2},{0,4,4,0},{4,0,4,2}}));
-	ASSERT(compareTableau(deplacementDroite({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}), {{0,0,0,4},{0,0,0,4},{0,0,0,8},{0,0,8,2}}));
-	ASSERT(compareTableau(deplacementHaut_sansCombi({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}), {{2,2,4,4},{2,4,0,4},{2,4,0,0},{0,0,0,0}}));
-	ASSERT(compareTableau(combineCases_haut({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}), {{4,0,0,2},{2,2,0,0},{0,8,4,0},{2,0,0,4}})); 
-	ASSERT(compareTableau(deplacementHaut({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}), {{4,2,4,2},{2,8,0,4},{0,0,0,0},{0,0,0,0}}));
-	ASSERT(compareTableau(flip_horizontal({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}), {{2,4,0,4},{0,4,4,0},{2,2,0,0},{2,0,0,2}}));
-	ASSERT(compareTableau(deplacementBas({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}), {{0,0,0,0},{0,0,0,0},{2,2,0,2},{4,8,4,4}}));
-	ASSERT(compareTableau(deplacement({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}, 1), deplacementHaut({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}})));
-	ASSERT(compareTableau(deplacement({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}, 2), deplacementBas({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}})));
-	ASSERT(compareTableau(deplacement({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}, 3), deplacementGauche({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}})));
-	ASSERT(compareTableau(deplacement({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}}, 4), deplacementDroite({{2,0,0,2},{2,2,0,0},{0,4,4,0},{2,4,0,4}})));	
+	CHECK(compareTableau(combineCases_gauche(plateau).plateau, {{2,0,0,2},{4,0,0,0},{0,8,0,0},{2,4,0,4}}));
+    
+	CHECK(compareTableau(deplacementGauche_sansCombi(plateau.plateau), {{2,2,0,0},{2,2,0,0},{4,4,0,0},{2,4,4,0}}));
+    
+	CHECK(compareTableau(deplacementGauche(plateau).plateau, {{4,0,0,0},{4,0,0,0},{8,0,0,0},{2,8,0,0}}));
+    
+	CHECK(compareTableau(flip_vertical(plateau.plateau), {{2,0,0,2},{0,0,2,2},{0,4,4,0},{4,0,4,2}}));
+    
+	CHECK(compareTableau(deplacementDroite(plateau).plateau, {{0,0,0,4},{0,0,0,4},{0,0,0,8},{0,0,8,2}}));
+    
+	CHECK(compareTableau(deplacementHaut_sansCombi(plateau.plateau), {{2,2,4,4},{2,4,0,4},{2,4,0,0},{0,0,0,0}}));
+    
+	CHECK(compareTableau(combineCases_haut(plateau).plateau, {{4,0,0,2},{2,2,0,0},{0,8,4,0},{2,0,0,4}}));
+    
+	CHECK(compareTableau(deplacementHaut(plateau).plateau, {{4,2,4,2},{2,8,0,4},{0,0,0,0},{0,0,0,0}}));
+    
+	CHECK(compareTableau(flip_horizontal(plateau.plateau), {{2,4,0,4},{0,4,4,0},{2,2,0,0},{2,0,0,2}}));
+    
+	CHECK(compareTableau(deplacementBas(plateau).plateau, {{0,0,0,0},{0,0,0,0},{2,2,0,2},{4,8,4,4}}));
+    
+	CHECK(compareTableau(deplacement(plateau, 1).plateau, deplacementHaut(plateau).plateau));
+	CHECK(compareTableau(deplacement(plateau, 2).plateau, deplacementBas(plateau).plateau));
+	CHECK(compareTableau(deplacement(plateau, 3).plateau, deplacementGauche(plateau).plateau));
+	CHECK(compareTableau(deplacement(plateau, 4).plateau, deplacementDroite(plateau).plateau));	
 }
+
 
