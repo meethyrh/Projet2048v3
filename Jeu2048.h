@@ -1,10 +1,6 @@
-#include <string>  
 #include <iostream> 
-#include <sstream>
 #include <vector>
 #include <cstdlib>
-#include <random>
-#include <assert.h>
 using namespace std;
 typedef vector<vector<int> > Plateau;
 

@@ -17,7 +17,6 @@ bool compareTableau(Plateau plateau1, Plateau plateau2){
 	} return true;
 }
 
-//pas encore dans le .h
 bool TestPlatoInit(Plateau plateau){
 	int m = 0; 
 	for(int i = 0; i < plateau.size(); i++){
