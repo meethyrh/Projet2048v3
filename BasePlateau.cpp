@@ -8,7 +8,6 @@ typedef vector<vector<int> > Plateau;
 
 #include "Jeu2048.h"
 
-
 Plateau plateauVide(){
     Plateau plateau = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
     return plateau;

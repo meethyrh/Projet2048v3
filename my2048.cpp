@@ -8,6 +8,7 @@ typedef vector<vector<int> > Plateau;
 #include "Jeu2048.h"
 
 int main(){
+// test de toutes les fonction du projet
     test_all_func();
     
     initscr();
@@ -20,6 +21,7 @@ int main(){
         exit(1);
     }
 
+//set up des couleurs
     start_color();
     init_pair(1, COLOR_YELLOW, COLOR_BLACK);
     init_pair(2, COLOR_WHITE, COLOR_RED);
