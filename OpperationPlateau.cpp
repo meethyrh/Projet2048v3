@@ -47,9 +47,11 @@ PS deplacementGauche(PS plateau){
 
 
 Plateau flip_vertical(Plateau plateau){
-    Plateau plateau_fliped = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
+    int m = plateau.size();
+    int n = plateau[1].size();
+    Plateau plateau_fliped(m, vector<int> (n));
     for(int i = 0; i < plateau.size(); i++){
-        int k = 3;
+        int k = plateau[i].size() -1;
         for(int j = 0; j < plateau[i].size(); j++){
             plateau_fliped[i][j] = plateau[i][k];
             k-=1;
@@ -105,7 +107,10 @@ PS deplacementHaut(PS plateau){
 
 
 Plateau flip_horizontal(Plateau plateau){
-    Plateau plat_flipH = {{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0}};
+    int m = plateau.size();
+    int n = plateau[1].size();
+    Plateau plat_flipH (m, vector<int> (n));
+
     //note: tab_flipH = tableau fliped sur l'axe Horizontal
     int k = plateau.size() - 1;
     for(int i = 0; i < plateau.size(); i++){

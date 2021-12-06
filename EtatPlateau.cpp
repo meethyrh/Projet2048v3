@@ -41,9 +41,9 @@ string dessine(Plateau plateau){
     stringstream ligne;
     for(int i = 0; i < plateau.size(); i++){
         for(int j = 0; j < plateau[i].size(); j++){
-            if(j < 3){
+            if(j < plateau[i].size()-1){
                 ligne << setw(4) << "*" << setw(4)  << plateau[i][j];  
-            } else if (j == 3){
+            } else if (j == plateau[i].size()-1){
                 ligne << setw(4) << "*" << setw(4) << plateau[i][j] << setw(4) << "*" << endl << "\n   *********************************\n";
             }  
         }
