@@ -4,7 +4,6 @@
 #include <random>
 using namespace std;
 typedef vector<vector<int> > Plateau;
-
 #include "Jeu2048.h"
 
 Plateau plateauVide(){

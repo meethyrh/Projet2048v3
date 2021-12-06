@@ -4,9 +4,7 @@
 #include <cstdlib>
 using namespace std;
 typedef vector<vector<int> > Plateau;
-
 #include "Jeu2048.h"
-
 
 PS combineCases_gauche(PS plateau){
     for(int i = 0; i < plateau.plateau.size(); i++){

@@ -8,6 +8,7 @@ typedef vector<vector<int> > Plateau;
 #include "Jeu2048.h"
 
 int main(){
+    
 // test de toutes les fonction du projet
     test_all_func();
     

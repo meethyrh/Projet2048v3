@@ -6,7 +6,6 @@
 #include <iomanip>
 using namespace std;
 typedef vector<vector<int> > Plateau;
-
 #include "Jeu2048.h"
 
 bool estTermine(Plateau plateau){
@@ -24,7 +23,6 @@ bool estTermine(Plateau plateau){
         }
     } return true;
 }
-
 
 bool estGagnant(Plateau plateau){
     for (int i = 0; i < plateau.size(); i++){
@@ -50,4 +48,3 @@ string dessine(Plateau plateau){
     }
     return "\n   *********************************\n" + ligne.str(); 
 }
-
