@@ -60,23 +60,32 @@ void test_all_func(){
 	assert(estTermine({{2,4,2,4},{4,2,4,2},{2,4,2,4},{4,2,4,2}}));
 	assert(estGagnant({{0,0,0,0},{2048,0,0,0},{0,2,0,2},{0,0,0,0}}));
     
-	assert(compareTableau(combineCases_gauche(plateau).plateau, {{2,0,0,2},{4,0,4,0},{0,8,0,0},{2,4,0,4}}));
-	assert(compareTableau(deplacementGauche_sansCombi(plateau.plateau), {{2,2,0,0},{2,2,2,2},{4,4,0,0},{2,4,4,0}}));
-	assert(compareTableau(deplacementGauche(plateau).plateau, {{4,0,0,0},{4,4,0,0},{8,0,0,0},{2,8,0,0}}));
-	assert(compareTableau(flip_vertical(plateau.plateau), {{2,0,0,2},{2,2,2,2},{0,4,4,0},{4,0,4,2}}));
-	assert(compareTableau(deplacementDroite(plateau).plateau, {{0,0,0,4},{0,0,4,4},{0,0,0,8},{0,0,2,8}}));
-	assert(compareTableau(deplacementHaut_sansCombi(plateau.plateau), {{2,2,2,2},{2,4,4,2},{2,4,0,4},{0,0,0,0}}));
-	assert(compareTableau(combineCases_haut(plateau).plateau, {{4,0,0,4},{0,2,2,0},{0,8,4,0},{2,0,0,4}}));
+	//deplacements
 	assert(compareTableau(deplacementHaut(plateau).plateau, {{4,2,2,4},{2,8,4,4},{0,0,0,0},{0,0,0,0}}));
-	assert(compareTableau(flip_horizontal(plateau.plateau), {{2,4,0,4},{0,4,4,0},{2,2,2,2},{2,0,0,2}}));
 	assert(compareTableau(deplacementBas(plateau).plateau, {{0,0,0,0},{0,0,0,0},{2,2,2,4},{4,8,4,4}}));
+	assert(compareTableau(deplacementGauche(plateau).plateau, {{4,0,0,0},{4,4,0,0},{8,0,0,0},{2,8,0,0}}));
+	assert(compareTableau(deplacementDroite(plateau).plateau, {{0,0,0,4},{0,0,4,4},{0,0,0,8},{0,0,2,8}}));
 
+	//combinaison
+	assert(compareTableau(combineCases_haut(plateau).plateau, {{4,0,0,4},{0,2,2,0},{0,8,4,0},{2,0,0,4}}));
+	assert(compareTableau(combineCases_gauche(plateau).plateau, {{2,0,0,2},{4,0,4,0},{0,8,0,0},{2,4,0,4}}));
+
+	//deplacement sans combinaison
+	assert(compareTableau(deplacementGauche_sansCombi(plateau.plateau), {{2,2,0,0},{2,2,2,2},{4,4,0,0},{2,4,4,0}}));
+	assert(compareTableau(deplacementHaut_sansCombi(plateau.plateau), {{2,2,2,2},{2,4,4,2},{2,4,0,4},{0,0,0,0}}));
+	
+	//retourner le plateau
+	assert(compareTableau(flip_vertical(plateau.plateau), {{2,0,0,2},{2,2,2,2},{0,4,4,0},{4,0,4,2}}));
+	assert(compareTableau(flip_horizontal(plateau.plateau), {{2,4,0,4},{0,4,4,0},{2,2,2,2},{2,0,0,2}}));
+	
+	//score
 	assert(combineCases_gauche(plateau).score == 16);
 	assert(deplacementGauche(plateau).score == 28);
 	assert(deplacementDroite(plateau).score == 28);
 	assert(combineCases_haut(plateau).score == 16);
 	assert(deplacementHaut(plateau).score == 16);
 
+	//deplacements
 	assert(not compareTableau(plateau.plateau, nouvelleCase(plateau.plateau)));
 	assert(not compareTableau(deplacement(plateau, 1).plateau, deplacementHaut(plateau).plateau));
 	assert(not compareTableau(deplacement(plateau, 2).plateau, deplacementBas(plateau).plateau));
