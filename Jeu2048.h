@@ -155,7 +155,8 @@ Plateau nouvelleCase(Plateau plateau);
 
 /** permet de savoir si une partie est terminée
  *  @param plateau un Plateau
- *  @return true si le plateau est vide, false sinon
+ *  @return true si il n'est plus possible de faire de déplacement
+ *  @return false sinon
  * TESTÉ SUR 4 CAS
  **/
 bool estTermine(Plateau plateau);
