@@ -56,6 +56,9 @@ void test_all_func(){
 	assert(x == 2 or x == 4);
 
 	assert(dessine(plateau.plateau).size() > 2);
+
+	assert(estTermine({{2,4,2,4},{4,2,4,2},{2,4,2,4},{4,2,4,2}}));
+	assert(estGagnant({{0,0,0,0},{2048,0,0,0},{0,2,0,2},{0,0,0,0}}));
     
 	assert(compareTableau(combineCases_gauche(plateau).plateau, {{2,0,0,2},{4,0,4,0},{0,8,0,0},{2,4,0,4}}));
 	assert(compareTableau(deplacementGauche_sansCombi(plateau.plateau), {{2,2,0,0},{2,2,2,2},{4,4,0,0},{2,4,4,0}}));
