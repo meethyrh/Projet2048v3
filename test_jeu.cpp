@@ -4,7 +4,6 @@
 #include <assert.h>
 using namespace std;
 typedef vector<vector<int> > Plateau;
-
 #include "Jeu2048.h"
 
 bool compareTableau(Plateau plateau1, Plateau plateau2){
